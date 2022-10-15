@@ -1,0 +1,117 @@
+import os
+import discord
+import dahost
+
+client = discord.Client()
+
+
+@client.event
+async def on_ready():
+    print('niggered {0.user}'.format(client))
+
+
+@client.event
+async def on_message(message):
+    if message.content.startswith('p!help'):
+        mmb = discord.Embed(title="Command List", color=0xd5e9e9)
+        mmb.add_field(name="Prefix is p!", value="level1to10, level10to60, level60to80, level80to145, level145to250")
+        await message.channel.send(embed=mmb)
+
+    if message.content.startswith('p!level1to10'):
+        dmm1 = discord.Embed(
+            title="Dawn",
+            description="The island where beginners start their adventure",
+            color=0xd5e9e9)
+        dmm1.add_field(name="How to level up from 1 to 10",
+                       value="Take the quest from the Villager",
+                       inline=False)
+        dmm1.add_field(name="Quest 1 (Level 1+)", value="Defeat 4 Bandits")
+        dmm1.add_field(name="Quest 2 (Level 5+)", value="Defeat Bandit Boss")
+        dmm1.add_field(
+            name="Reaching level 10",
+            value=
+            "After reaching level 10 buy a boat and a compass then travel to Shell Town",
+            inline=False)
+        dmm1.set_image(
+            url=
+            "https://trello.com/1/cards/63478c404c1e570610eb65a2/attachments/63478c9c87a463005a0e0155/previews/63478c9e87a463005a0e0207/download/map1.png"
+        )
+        await message.channel.send(embed=dmm1)
+
+    if message.content.startswith('p!level10to60'):
+        dmm2 = discord.Embed(title="Shell Town",
+                             description="The second island in the game",
+                             color=0xd5e9e9)
+        dmm2.add_field(name="How to level up from 10 to 60",
+                       value="Take the quest from 2 Villagers",
+                       inline=False)
+        dmm2.add_field(name="Quest 1 (Level 10+)",
+                       value="Defeat 4 Marine Bandits")
+        dmm2.add_field(name="Quest 2 (Level 30+)",
+                       value="Defeat 4 Marine Soldiers")
+        dmm2.add_field(name="Quest 3 (Level 30+)",
+                       value="Defeat Axe Hand Boss")
+        dmm2.add_field(
+            name="Obtaining Axe Hand",
+            value=
+            "Defeating Axe Hand Morgan will have 20% chances to drop Axe Hand",
+            inline=False)
+        dmm2.add_field(
+            name="Obtaining Katana, Cutlass",
+            value=
+            "You can buy Katana for 8K and Cutlass for 4K located near Weapon Sword Smith (The NPC with 'Cash' title)",
+            inline=False)
+        dmm2.add_field(name="Obtaining 1SS",
+                       value="Talk to Sword Master (green hair guy)",
+                       inline=False)
+        dmm2.add_field(name="Selling Mushrooms",
+                       value="You can sell Mushrooms to an NPC named Kaari",
+                       inline=False)
+        dmm2.add_field(
+            name="Reaching level 60",
+            value=
+            "After reaching level 60 buy a compass to Baratie then travel to there",
+            inline=False)
+        dmm2.set_image(
+            url=
+            "https://trello.com/1/cards/63478c530f9ffa0117e2f174/attachments/63478cbac9ed33056c37bd35/previews/63478cbbc9ed33056c37bd52/download/image.png"
+        )
+        await message.channel.send(embed=dmm2)
+
+    if message.content.startswith('p!level60to80'):
+        dmm3 = discord.Embed(title="Baratie", description="The third map in the game", color=0xd5e9e9)
+        dmm3.add_field(name="How to level up from 60 to 80", value="Take the quest from The Chef", inline=False)
+        dmm3.add_field(name="Quest 1 (Level 60+)", value="Defeat 4 Krieg Bandits")
+        dmm3.add_field(name="Quest 2 (Level 70+)", value="Defeat Kreig Boss")
+        dmm3.add_field(name="Obtaining Black Leg", value="You can buy Black Leg on the second floor of Baratie for 12K", inline=False)
+        dmm3.add_field(name="Reaching level 80", value="After reaching level 80 buy a compass to Orange Town then travel to there", inline=False)
+        dmm3.set_image(url="https://trello.com/1/cards/63478c596f963602729c9d00/attachments/63478d050775bb00183a59ce/previews/63478d060775bb00183a5a35/download/image.png")
+        await message.channel.send(embed=dmm3)
+
+    if message.content.startswith('p!level80to145'):
+        dmm4 = discord.Embed(title="Orange Town", description="The fourth map in the game", color=0xd5e9e9)
+        dmm4.add_field(name="How to level up from 80 to 145", value="Take the quest from the 2 Villager", inline=False)
+        dmm4.add_field(name="Quest 1 (Level 80+)", value="Defeat 4 Orange Pirates")
+        dmm4.add_field(name="Quest 2 (Level 110+)", value="Defeat 4 Orange Soldiers")
+        dmm4.add_field(name="Quest 3 (Level 110+)", value="Defeat Buggy Boss")
+        dmm4.add_field(name="Obtaining Knife Claws", value="Defeating Buggy Boss will have 20% chances to drop Knife Claws", inline=False)
+        dmm4.add_field(name="Reaching level 145", value="After reaching level 145 buy a compass to Sea Shark Park (Arlong Park) then travel to there", inline=False)
+        dmm4.set_image(url="https://trello.com/1/cards/63478c6bc6505604c588a309/attachments/63478d3b8849930150fd957e/previews/63478d3b8849930150fd95ae/download/image.png")
+        await message.channel.send(embed=dmm4)
+
+    if message.content.startswith('p!level145to250'):
+        dmm5 = discord.Embed(title="Sea Shark Park (Arlong Park)", description="The fifth map in the game", color=0xd5e9e9)
+        dmm5.add_field(name="How to level up from 145 to 250", value="Take the quest from Sansa", inline=False)
+        dmm5.add_field(name="Quest 1 (Level 145+)", value="Defeat 4 Fishman Katana")
+        dmm5.add_field(name="Quest 2 (Level 145+)", value="Defeat 4 Fishman Karate")
+        dmm5.add_field(name="Quest 3 (Level 145+)", value="Defeat Arlong Boss")
+        dmm5.add_field(name="Obtaining Saw Blades", value="Defeating Arlong Boss will have 5% chances to drop Saw Blades", inline=False)
+        dmm5.add_field(name="Reaching level 250", value="After reaching level 250 buy a compass to Autumn Island then travel to there", inline=False)
+        dmm5.set_image(url="https://trello.com/1/cards/63478d65fe201500984ca3ab/attachments/63478d72a9f54001e35a71bc/previews/63478d73a9f54001e35a71c6/download/image.png")
+        await message.channel.send(embed=dmm5)
+
+dahost.keep_alive()
+
+my_secret = os.environ['MTAzMDc2MDg0MTk1NzYwOTQ4Mg.G0x05a.1Cr8EjbuAqYWij7hQD_2ZrHsDVdxJppElmPnQk']
+client.run(my_secret)
+
